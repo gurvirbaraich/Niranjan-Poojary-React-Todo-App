@@ -1,114 +1,98 @@
-import React, { useState } from 'react';
-import './TodoContainer.css';
+import React, { useState } from "react";
 
-//import AddTaskForm , UpdateForm , ToDo Component 
-import AddTaskForm from './toDos/AddTaskForm'
-import UpdateForm from './toDos/UpdateForm'
-import ToDo from './toDos/ToDo'
+import ToDo from "./toDos/ToDo";
+import UpdateForm from "./toDos/UpdateForm";
+import AddTaskForm from "./toDos/AddTaskForm";
 
-//importting BootStrap Module
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./TodoContainer.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-//TodoContainer Component
 function TodoContainer(props) {
+  const [newTask, setNewTask] = useState("");
+  const [updateData, setUpdateData] = useState("");
+  const [toDo, setToDo] = useState(props.jsonTodos);
 
-    //Task Todo List State
-    const [toDo, setToDo] = useState(props.jsonTodos);
-    // Temp State
-    const [newTask, setNewTask] = useState('');
-    const [updateData, setUpdateData] = useState('');
-
-
-    // Add task
-    const addTask = () => {
-        if (newTask) {
-            let newEntry = {
-                id: Date.now(),
-                title: newTask,
-                completed:false
-            }
-            setToDo([newEntry, ...toDo])
-            setNewTask('');
-        }
+  const addTask = () => {
+    if (newTask) {
+      let newEntry = {
+        id: Date.now(),
+        title: newTask,
+        completed: false,
+      };
+      setToDo([newEntry, ...toDo]);
+      setNewTask("");
     }
+  };
 
-    //Delete Task 
-    const deleteTask = (id) => {
-        let newTasks = toDo.filter(task => task.id !== id);
-        setToDo(newTasks)
-    }
+  const deleteTask = (id) => {
+    let newTasks = toDo.filter((task) => task.id !== id);
+    setToDo(newTasks);
+  };
 
-    //New Task as Done and Complete
-    const markDone = (id) => {
-        let completeTask = toDo.map(task => {
-            if (task.id === id) {
-                return ({ ...task, completed: !task.completed });
-            }
-            return task;
-        })
-        setToDo(completeTask)
-    }
-    //Cancel update
-    const cancelUpdate = () => {
-        setUpdateData('');
-    }
+  const markDone = (id) => {
+    let completeTask = toDo.map((task) => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setToDo(completeTask);
+  };
+  //Cancel update
+  const cancelUpdate = () => {
+    setUpdateData("");
+  };
 
-    //Change task for update 
-    const changeTask = (e) => {
-        let newEntry = {
-            id: updateData.id,
-            title:e.target.value,
-            completed: updateData.completed ? true : false
-        }
-        setUpdateData(newEntry);
-    }
+  //Change task for update
+  const changeTask = (e) => {
+    let newEntry = {
+      id: updateData.id,
+      title: e.target.value,
+      completed: updateData.completed ? true : false,
+    };
+    setUpdateData(newEntry);
+  };
 
-    //Update Task
-    const updateTask = () => {
-        let filterRecord = [...toDo].filter(task => task.id !== updateData.id)
-        let UpdatedObject = [updateData, ...filterRecord];
-        setToDo(UpdatedObject);
-        setUpdateData('')
-    }
+  //Update Task
+  const updateTask = () => {
+    let filterRecord = [...toDo].filter((task) => task.id !== updateData.id);
+    let UpdatedObject = [updateData, ...filterRecord];
+    setToDo(UpdatedObject);
+    setUpdateData("");
+  };
 
-    return (
-        <React.Fragment>
-            {/* heading of ToDo App  */}
-            <h1 id='todo-heading'> ToDo List</h1>
-        <div className="container App">
+  return (
+    <React.Fragment>
+      {/* heading of ToDo App  */}
+      <div className="container">
+      <h1 id="todo-heading"> ToDo List</h1>
+        {/*Rendering Two Comp updating Task  && for Adding a New Task  */}
+        {updateData && updateData ? (
+          <UpdateForm
+            updateData={updateData}
+            changeTask={changeTask}
+            updateTask={updateTask}
+            cancelUpdate={cancelUpdate}
+          />
+        ) : (
+          <AddTaskForm
+            newTask={newTask}
+            setNewTask={setNewTask}
+            addTask={addTask}
+          />
+        )}
 
-            {/*Rendering Two Comp updating Task  && for Adding a New Task  */}
-            {
-                updateData && updateData ? (
-                      <UpdateForm
-                          updateData={updateData}
-                          changeTask={changeTask}
-                          updateTask={updateTask}
-                          cancelUpdate={cancelUpdate}
-
-                    />
-                ) : (
-                        <AddTaskForm
-                            newTask={newTask}
-                            setNewTask={setNewTask}
-                            addTask = {addTask}
-                        />
-            )
-            }
-            
-            {/* Display ToDos  */}
-            <ToDo
-                toDo={toDo}
-                markDone={markDone}
-                setUpdateData={setUpdateData}
-                deleteTask = {deleteTask}
-            />
-           
-            </div>
-        </React.Fragment>
-    );
+        {/* Display ToDos  */}
+        <ToDo
+          toDo={toDo}
+          markDone={markDone}
+          setUpdateData={setUpdateData}
+          deleteTask={deleteTask}
+        />
+      </div>
+    </React.Fragment>
+  );
 }
-
 
 //finally Export TodoContainer File
 export default TodoContainer;

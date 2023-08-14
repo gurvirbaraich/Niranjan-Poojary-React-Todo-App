@@ -1,4 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Space Mono&display=swap");
+
 /* --------hiding scrollbar of app ------------ */
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
+}
+
+* {
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+}
+
+.full-center-aligned {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+body {
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+}
+
+body,
+#root,
+.bg-dark-secondary {
+  background-color: #1A1A40;
 }

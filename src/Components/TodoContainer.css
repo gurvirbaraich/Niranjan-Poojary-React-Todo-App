@@ -1,96 +1,93 @@
-/* --------------Some Custom Css ---------------- */
-.App{
-    text-align: center;
-    color: #fff;
-}
-
 /* ------------class taskBg Css ------------ */
-.container{
-    background: #1A1A40;
-    padding: 2rem;
-    border-radius: 5px;
-    margin-top: auto;
-    width: auto;
-
+.container {
+  color: #ddd;
+  text-align: center;
+  background: #1a1a40;
+  height: 100svh;
+  padding: 2rem;
+  border-radius: 5px;
+  margin-top: auto;
+  width: auto;
 }
+
 .taskBg {
-     background-color: #8758ff;
-     border-radius: 6px;
-     margin-bottom: 10px;
-     text-align: left;
-     font-size: 22px;
-     position: relative;
-     padding: 10px 140px 10px 15px;
+  background-color: #8758ffaa;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 18px;
+  position: relative;
+  padding: 10px 140px 10px 15px;
 }
 
-.taskBg  div {
-    display: flex;
-    align-items: center;
+.taskBg div {
+  display: flex;
+  align-items: center;
 }
 
 /* -------------task number---------------- */
-.taskNumber{
-    color: #fff;
-    border: 1px solid #1a1a40;
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    display: flex;
-    text-align: center;
-    font-size: 14px;
-    margin-right: 8px;
-    align-items: center;
-    justify-content: center;
+.taskNumber {
+  color: #ddd;
+  border: 1px solid #1a1a40;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 8px;
+  align-items: center;
+  justify-content: center;
 }
 
-.taskBg .taskText{
-      flex: 1;
+.taskBg .taskText {
+  flex: 1;
 }
-.taskBg .done .taskText{
-      text-decoration: line-through;
-      opacity: 0.4;
+.taskBg .done .taskText {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
 /* -----------edit delete marked icons----------- */
-.taskBg .iconsWrap{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 15px;
-    width: auto;
-    display: inline-block;
+.taskBg .iconsWrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: auto;
+  display: inline-block;
 }
 
-.taskBg .iconsWrap span{
-    display: inline-block;
-    margin: 0px 10px 0 10px;
-    cursor: pointer;
-    color: #fff;
+.taskBg .iconsWrap span {
+  display: inline-block;
+  margin: 0px 10px 0 10px;
+  cursor: pointer;
+  color: #ddd;
 }
 
 .taskBg .iconsWrap span:hover {
-    color: #1a1a40;
+  color: #1a1a40;
 }
 /* ---------my Custom Length------------- */
-.mr-20{
-    margin-right: 10px;
+.mr-20 {
+  margin-right: 10px;
 }
 
 /* ----------todo Heading-------------- */
-#todo-heading{
-    color: #fff;
-   font-size: x-large;
-   text-align: center;
-   font-size: 20px;
-   margin: 30px 0px;
+#todo-heading {
+  color: #ddd;
+  font-size: x-large;
+  text-align: center;
+  font-size: 20px;
+  margin: 30px 0px;
 }
 
 /* -------------resposiveness of Small Device ----------------- */
-@media screen and (max-width : 500px) {
-    .taskBg .iconsWrap span{
-        margin: 0px 4px;
-    }
-    .taskBg{
-        font-size: 16px;
-    }
+@media screen and (max-width: 500px) {
+  .taskBg .iconsWrap span {
+    margin: 0px 4px;
+  }
+  .taskBg {
+    font-size: 16px;
+  }
 }

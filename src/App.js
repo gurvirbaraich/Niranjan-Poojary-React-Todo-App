@@ -1,51 +1,47 @@
-//importing react , useEffect and useState hooks
-import React, { useEffect, useState } from 'react'
+import "./App.css";
 
-import './App.css'
-//import TodoContainer Component
-import TodoContainer from './Components/TodoContainer'
-//Bars for loading wait animation
 import { Bars } from "react-loader-spinner";
+import React, { useEffect, useState } from "react";
+import TodoContainer from "./Components/TodoContainer";
 
-
-
-//main Component of this Todo App 
 const App = () => {
+  const [json, setjson] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-//after loading json we put whole object in json of useState
-    const [json, setjson] = useState([]);
-//rendering whole App component after loading 
-    const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    // fecthing the url to obtain the list of todos
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=6")
+      // converting the response to json
+      .then((response) => response.json())
+      .then((json) => {
+        setTimeout(() => {
+          // setting the response to @json
+          setjson(json);
 
-//useEffect hook with empty Array dependendency means
-//fetching api with no side effect for disturb our app
-    useEffect(() => {
-        // inbuilt function for fetch API 
-        fetch("https://jsonplaceholder.typicode.com/todos?_limit=6")
-            .then((response) => response.json())
-            .then((json) => {
-                setTimeout(() => {
-                    // after fething json we update json with calling this function
-                    // setJson that change value of json With help of useEffect Hook
-                    setjson(json)
-                    setLoading(true);
-                }, 1000);
-            
-            });
-    }, []);
+          // setting the loading to false, indicating that the data is loaded
+          setLoading(false);
+        }, 1000);
+      });
+  }, []);
 
-    
   return (
-      <div>
-          {/* after loading Api rendering TodoContainer Component If not ! then Show thw Waiting Bar  */}
-          {loading ? (
-              <TodoContainer jsonTodos={json} />
-          ) : (
-              <Bars height="180" width="180" color="#4fa94d" ariaLabel="bars-loading" visible={true} />
-          )}
-          
+    <div>
+      {/* conditionally checking wether the app is ready to be displayed or not and acting accoridingly. */}
+      {!loading ? (
+        <TodoContainer jsonTodos={json} />
+      ) : (
+        <div className="full-center-aligned bg-dark-secondary">
+          <Bars
+            height="180"
+            width="180"
+            color="#4fa94d"
+            ariaLabel="bars-loading"
+            visible={true}
+          />
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default App;
