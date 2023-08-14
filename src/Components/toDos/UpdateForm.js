@@ -1,8 +1,8 @@
 import React from 'react'
 
-// -----------UpdateForm Component------------// 
+//UpdateForm Component 
 const UpdateForm = (props) => {
-    // ------props object we got updateData , cancelUpdate , updateTask ---------//
+    //props object we got updateData , cancelUpdate , updateTask
   return (
       <>
           {/* Update Task  */}

@@ -1,27 +1,27 @@
-// -----------importing react , useEffect and useState hooks --------//
+//importing react , useEffect and useState hooks
 import React, { useEffect, useState } from 'react'
 
 import './App.css'
-//---------------import TodoContainer Component-----------------------//
+//import TodoContainer Component
 import TodoContainer from './Components/TodoContainer'
-// --------------------Bars for loading wait animation ---------------//
+//Bars for loading wait animation
 import { Bars } from "react-loader-spinner";
 
 
 
-// ----------main Component of this Todo App -------------------------//
+//main Component of this Todo App 
 const App = () => {
 
-//------after loading json we put whole object in json of useState----//
+//after loading json we put whole object in json of useState
     const [json, setjson] = useState([]);
-//------rendering whole App component after loading ----------------//
+//rendering whole App component after loading 
     const [loading, setLoading] = useState(false);
 
-//--------useEffect hook with empty Array dependendency means --------
-//-----fetching api with no side effect for disturb our app----------
+//useEffect hook with empty Array dependendency means
+//fetching api with no side effect for disturb our app
     useEffect(() => {
         // inbuilt function for fetch API 
-        fetch("https://jsonplaceholder.typicode.com/todos?_limit=4")
+        fetch("https://jsonplaceholder.typicode.com/todos?_limit=6")
             .then((response) => response.json())
             .then((json) => {
                 setTimeout(() => {
@@ -30,7 +30,7 @@ const App = () => {
                     setjson(json)
                     setLoading(true);
                 }, 1000);
-            //    console.log(json)
+            
             });
     }, []);
 
@@ -48,4 +48,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import './TodoContainer.css'
+import './TodoContainer.css';
 
-//----------import AddTaskForm , UpdateForm , ToDo Component --------//
+//import AddTaskForm , UpdateForm , ToDo Component 
 import AddTaskForm from './toDos/AddTaskForm'
 import UpdateForm from './toDos/UpdateForm'
 import ToDo from './toDos/ToDo'
 
-//-------------importting BootStrap Module--------------------//
+//importting BootStrap Module
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// ------------TodoContainer Component------------------------//
+//TodoContainer Component
 function TodoContainer(props) {
 
-    //----------- Task Todo List State -------------------//
+    //Task Todo List State
     const [toDo, setToDo] = useState(props.jsonTodos);
-    //------------- Temp State ---------------------------//
+    // Temp State
     const [newTask, setNewTask] = useState('');
     const [updateData, setUpdateData] = useState('');
 
 
-    //------------ Add task -------------------//
+    // Add task
     const addTask = () => {
         if (newTask) {
             let newEntry = {
@@ -32,13 +32,13 @@ function TodoContainer(props) {
         }
     }
 
-    //--------------Delete Task -----------------//
+    //Delete Task 
     const deleteTask = (id) => {
         let newTasks = toDo.filter(task => task.id !== id);
         setToDo(newTasks)
     }
 
-    //-------New Task as Done and Complete--------//
+    //New Task as Done and Complete
     const markDone = (id) => {
         let completeTask = toDo.map(task => {
             if (task.id === id) {
@@ -48,12 +48,12 @@ function TodoContainer(props) {
         })
         setToDo(completeTask)
     }
-    //--------Cancel update---------------------//
+    //Cancel update
     const cancelUpdate = () => {
         setUpdateData('');
     }
 
-    //--------Change task for update --------//
+    //Change task for update 
     const changeTask = (e) => {
         let newEntry = {
             id: updateData.id,
@@ -63,7 +63,7 @@ function TodoContainer(props) {
         setUpdateData(newEntry);
     }
 
-    //---------Update Task -----------------//
+    //Update Task
     const updateTask = () => {
         let filterRecord = [...toDo].filter(task => task.id !== updateData.id)
         let UpdatedObject = [updateData, ...filterRecord];
@@ -74,7 +74,7 @@ function TodoContainer(props) {
     return (
         <React.Fragment>
             {/* heading of ToDo App  */}
-            <h2 id='todo-heading'>React ToDo App (fetching API)</h2>
+            <h1 id='todo-heading'> ToDo List</h1>
         <div className="container App">
 
             {/*Rendering Two Comp updating Task  && for Adding a New Task  */}
@@ -110,5 +110,5 @@ function TodoContainer(props) {
 }
 
 
-//-----------finally Export This File-------------//
+//finally Export TodoContainer File
 export default TodoContainer;

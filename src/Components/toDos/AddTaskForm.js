@@ -1,11 +1,11 @@
 import React from 'react'
 
-// --------AddTask Component-------------------//
+//AddTask Component
 
 const AddTaskForm = (props) => {
     // here we got props object as newTask , add Task , 
     return (
-    //------------   Add a new Task --------------//
+    //Add a new Task
       <>
           <div className="row mb-3">
               <div className="col">
@@ -26,4 +26,4 @@ const AddTaskForm = (props) => {
   )
 }
 // finally Export this Module 
-export default AddTaskForm
+export default AddTaskForm;

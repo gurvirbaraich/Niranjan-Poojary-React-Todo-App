@@ -1,9 +1,9 @@
 import React from 'react'
-//--------importing some module for icons -------//
+//importing some module for icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-// -----------ToDo Component--------------------//
+//ToDo Component
 const ToDo = (props) => {
     return (
     //   ---Here We Got props object as toDo , mrakDone deleteTask---------//
@@ -55,4 +55,4 @@ const ToDo = (props) => {
   )
 }
 
-export default ToDo
+export default ToDo;
